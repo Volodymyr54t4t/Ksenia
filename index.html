@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для Ксюші ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            font-family: 'Georgia', serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 2s ease-in;
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: #fff;
+            text-shadow: 2px 2px 20px rgba(255, 105, 180, 0.8);
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .heart-emoji {
+            font-size: 5rem;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            color: #ff69b4;
+            animation: float linear infinite;
+            opacity: 0;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.2);
+            }
+            50% {
+                transform: scale(1);
+            }
+            75% {
+                transform: scale(1.2);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-top: 20px;
+            text-shadow: 1px 1px 10px rgba(255, 105, 180, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heart-emoji">❤️</div>
+        <h1>Ксюша<br>я тебе люблю</h1>
+        <div class="heart-emoji">❤️</div>
+    </div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            
+            // Random horizontal position
+            heart.style.left = Math.random() * 100 + 'vw';
+            
+            // Random animation duration (slower hearts)
+            const duration = Math.random() * 5 + 8;
+            heart.style.animationDuration = duration + 's';
+            
+            // Random delay
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            
+            // Random size
+            const size = Math.random() * 20 + 20;
+            heart.style.fontSize = size + 'px';
+            
+            document.body.appendChild(heart);
+            
+            // Remove heart after animation completes
+            setTimeout(() => {
+                heart.remove();
+            }, (duration + 5) * 1000);
+        }
+
+        // Create hearts continuously
+        setInterval(createHeart, 300);
+        
+        // Create initial batch of hearts
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createHeart, i * 200);
+        }
+    </script>
+</body>
+</html>
